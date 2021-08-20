@@ -12,7 +12,7 @@
       loop:
         - { key: "PermitRootLogin", value: "forced-commands-only" }
         - { key: "PasswordAuthentication", value: "no" } 
-        - { key: "Port", value: "22"}
+        - { key: "Port", value: "2205"}
       notify:
        - Restart sshd
   handlers:
