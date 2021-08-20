@@ -1,0 +1,2 @@
+[servers]
+3.88.222.151 ansible_user=ubuntu
