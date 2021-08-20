@@ -1,0 +1,22 @@
+- hosts: 3.88.222.151
+  become: yes
+  become_user: root
+  gather_facts: false
+  tasks:
+    - name: Configure sshd 
+      lineinfile:
+        path: "/etc/ssh/sshd_config"
+        regex: "^(#)?{{item.key}}"
+        line: "{{item.key}} {{item.value}}"
+        state: present
+      loop:
+        - { key: "PermitRootLogin", value: "forced-commands-only" }
+        - { key: "PasswordAuthentication", value: "no" } 
+        - { key: "Port", value: "22"}
+      notify:
+       - Restart sshd
+  handlers:
+       - name: Restart sshd
+         service:
+           name: sshd
+           state: restarted
