@@ -1,4 +1,4 @@
-- hosts: 3.88.222.151
+- hosts: servers
   become: yes
   become_user: root
   gather_facts: false
